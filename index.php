@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="max-w-[screen] overflow-x-hidden font-['Poppins']">
+<body class="max-w-[100%] overflow-x-hidden font-['Poppins']">
     <div class="bg-yellow-400">
         <div class="container">
             <div class="text-slate-900 pl-4  md:px-24 py-3">
@@ -21,7 +21,7 @@
     </div>
 
     <nav class="bg-slate-50 border-b-2 border-slate-500 " id="navbar">
-        <div class="container flex flex-row justify-between items-center py-2 px-4 md:px-24">
+        <div class=" flex flex-row justify-between items-center py-2 px-4 md:px-24">
             <a class="flex" href="">
                 <img class="rounded-full h-auto max-w-[60px] border-black border-2" src="asset/logo.jpg" alt="logo">
             </a>
@@ -44,7 +44,7 @@
             <div class="container">
                 <div>
                     <?php
-                        require_once "asset/konek/konek.php";
+                        require_once "asset/koneksi/koneksi.php";
                         $tanggalupdate = mysqli_query($connect, "SELECT * FROM tanggalupdate");
                         while($row=mysqli_fetch_array($tanggalupdate)) {
                     ?>
@@ -58,19 +58,19 @@
     
 
     <div class="pb-14" id="mainpage">
-        <div class="container">
+        <div class="w-full">
 
             <!-- Buat Brand -->
             <div class="flex flex-col md:flex-row md:px-24 px-4 space-y-2 ">
-                <div class="md:w-2/12 font-medium mt-1">
+                <div class="md:w-2/12 font-medium mt-1 flex items-center ">
                     <p>Brand</p>
                 </div>
-                <div class="md:w-7/12">
+                <div class="md:w-7/12 ">
                     <select class="border border-gray-300 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 w-full" name="" id="brand-dropdown">
                     <option value="0">Pilih Brand</option>
                     <?php
-						error_reporting(0);
-						require_once "asset/konek/konek.php";
+						
+						require_once "asset/koneksi/koneksi.php";;
 						$brand = mysqli_query($connect, "SELECT * FROM brand");
 						while($row =mysqli_fetch_array($brand)) {
 						?>
@@ -88,8 +88,8 @@
 
 
             <!-- Buat Socket -->
-            <div class="flex flex-col md:flex-row md:px-24 px-4 space-y-2">
-                <div class="md:w-2/12 font-medium mt-1">
+            <div class="flex flex-col md:flex-row md:mx-20 px-4 space-y-2">
+                <div class="md:w-2/12 font-medium mt-1 flex items-center">
                     <p>Socket</p>
                 </div>
                 <div class="md:w-7/12">
@@ -104,18 +104,18 @@
 
 
             <!-- Buat processor part ke 1 -->
-            <div class="flex flex-col md:flex-row md:px-24 px-4 space-y-2 ">
-                <div class="md:w-2/12 font-medium mt-1">
+            <div class="flex flex-col md:flex-row md:mx-20  px-4 space-y-2 ">
+                <div class="md:w-2/12 font-medium mt-1 flex items-center ">
                     <p>Processor</p>
                 </div>
-                <div class="md:w-7/12">
+                <div class="md:w-7/12 ">
                     <select class="border border-gray-300 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 w-[100%] " name="n1" id="s1"
                     onchange="updateHargax(this,document.getElementById('q1'),document.getElementById('p1'),document.getElementById('nex1'))">
                     <option value="0">Pilih Socket Dahulu</option>
                     </select>
                     <input name="name1" id="nex1" type="hidden" value="0">
                 </div>
-                <div class="md:w-1/12">
+                <div class="md:w-1/12 md:pl-5">
                     <select class="border border-gray-300 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 w-[100%]" name="qty1" id="q1"
 						onchange="updateHarga(this.value, document.getElementById('s1'),document.getElementById('p1'))">
 						<option value="1">1</option>
@@ -129,7 +129,7 @@
 						<option value="9">9</option>
 					</select>
                 </div>
-                <div class="">
+                <div class="md:w-2/12 md:pl-5">
                     <input id="p1" class="border border-gray-300 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 w-[100%]" type="text" value="0"
 						style="text-align:right; font-size: medium;" disabled="">
                 </div>
@@ -137,8 +137,8 @@
 
 
             <!-- Buat motherboard part ke 2 -->
-            <div class="flex flex-col md:flex-row md:px-24 px-4 space-y-2">
-                <div class="md:w-2/12 font-medium mt-1">
+            <div class="flex flex-col md:flex-row md:mx-20 px-4 space-y-2">
+                <div class="md:w-2/12 font-medium mt-1 flex items-center">
                     <p>Motherboard</p>
                 </div>
                 <div class="md:w-7/12">
@@ -148,7 +148,7 @@
                     </select>
                     <input name="name2" id="nex1" type="hidden" value="0">
                 </div>
-                <div class="md:w-1/12">
+                <div class="md:w-1/12 md:pl-5">
                     <select class="border border-gray-300 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 w-[100%]" name="qty2" id="q2"
 						onchange="updateHarga(this.value, document.getElementById('s2'),document.getElementById('p2'))">
 						<option value="1">1</option>
@@ -162,7 +162,7 @@
 						<option value="9">9</option>
 					</select>
                 </div>
-                <div class="">
+                <div class="md:w-2/12 md:pl-5">
                     <input id="p2" class="border border-gray-300 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 w-[100%]" type="text" value="0"
 						style="text-align:right; font-size: medium;" disabled="">
                 </div>
@@ -170,8 +170,8 @@
 
 
             <!-- Harddisk 3-->
-			<div class="flex flex-col md:flex-row md:px-24 px-4 space-y-2">
-                <div class="md:w-2/12 font-medium mt-1">
+			<div class="flex flex-col md:flex-row md:mx-20 px-4 space-y-2">
+                <div class="md:w-2/12 font-medium mt-1 flex items-center">
 					<p>Harddisk</p>
 				</div>
 				<div class="md:w-7/12">
@@ -179,7 +179,7 @@
 						onchange="updateHargax(this,document.getElementById('q3'),document.getElementById('p3'),document.getElementById('nex3'))">
 						<option value="0">Pilih Harddisk</option>
 						<?php
-						require_once "asset/konek/konek.php";
+						require_once "asset/koneksi/koneksi.php";;
 						$harddisk = mysqli_query($connect, "SELECT * FROM harddisk");
 						while($row=mysqli_fetch_array($harddisk)) {
 							?>
@@ -190,7 +190,7 @@
 					</select>
 					<input name="name3" id="nex3" type="hidden" value="0">
 				</div>
-				<div class="md:w-1/12">
+				<div class="md:w-1/12 md:pl-5">
                     <select class="border border-gray-300 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 w-[100%]" name="qty3" id="q3"
 						onchange="updateHarga(this.value, document.getElementById('s3'),document.getElementById('p3'))"
 						style="font-size: medium;">
@@ -205,15 +205,15 @@
 						<option value="9">9</option>
 					</select>
 				</div>
-				<div class="">
+				<div class="md:w-2/12 md:pl-5">
 					<input id="p3" class="border border-gray-300 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 w-[100%]" type="text" value="0"
 						style="text-align:right; font-size: medium;" disabled="">
 				</div>
 			</div>
 
             <!-- RAM 4-->
-			<div class="flex flex-col md:flex-row md:px-24 px-4 space-y-2">
-                <div class="md:w-2/12 font-medium mt-1">
+			<div class="flex flex-col md:flex-row md:mx-20 px-4 space-y-2">
+                <div class="md:w-2/12 font-medium mt-1 flex items-center">
 					<p>RAM</p>
 				</div>
 				<div class="md:w-7/12">
@@ -221,7 +221,7 @@
 						onchange="updateHargax(this,document.getElementById('q4'),document.getElementById('p4'),document.getElementById('nex4'))">
 						<option value="0">Pilih RAM</option>
 						<?php
-						require_once "asset/konek/konek.php";
+						require_once "asset/koneksi/koneksi.php";;
 						$ram = mysqli_query($connect, "SELECT * FROM ram");
 						while($row=mysqli_fetch_array($ram)) {
 							?>
@@ -232,7 +232,7 @@
 					</select>
 					<input name="name4" id="nex4" type="hidden" value="0">
 				</div>
-				<div class="md:w-1/12">
+				<div class="md:w-1/12 md:pl-5">
 					<select class="border border-gray-300 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 w-[100%]" name="qty4" id="q4"
 						onchange="updateHarga(this.value, document.getElementById('s4'),document.getElementById('p4'))"
 						style="font-size: medium;">
@@ -247,15 +247,15 @@
 						<option value="9">9</option>
 					</select>
 				</div>
-				<div class="">
+				<div class="md:w-2/12 md:pl-5">
 					<input id="p4" class="border border-gray-300 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 w-[100%]" type="text" value="0"
 						style="text-align:right; font-size: medium;" disabled="">
 				</div>
 			</div>
 
             <!-- SSD 5-->
-			<div class="flex flex-col md:flex-row md:px-24 px-4 space-y-2">
-                <div class="md:w-2/12 font-medium mt-1">
+			<div class="flex flex-col md:flex-row md:mx-20 px-4 space-y-2">
+                <div class="md:w-2/12 font-medium mt-1 flex items-center">
 					<p>SSD</p>
 				</div>
 				<div class="md:w-7/12">
@@ -263,7 +263,7 @@
 						onchange="updateHargax(this,document.getElementById('q5'),document.getElementById('p5'),document.getElementById('nex5'))">
 						<option value="0">Pilih SSD</option>
 						<?php
-						require_once "asset/konek/konek.php";
+						require_once "asset/koneksi/koneksi.php";;
 						$ssd = mysqli_query($connect, "SELECT * FROM ssd");
 						while($row=mysqli_fetch_array($ssd)) {
 							?>
@@ -274,7 +274,7 @@
 					</select>
 					<input name="name5" id="nex5" type="hidden" value="0">
 				</div>
-				<div class="md:w-1/12">
+				<div class="md:w-1/12 md:pl-5">
 					<select class="border border-gray-300 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 w-[100%]" name="qty5" id="q5"
 						onchange="updateHarga(this.value, document.getElementById('s5'),document.getElementById('p5'))"
 						style="font-size: medium;">
@@ -289,15 +289,15 @@
 						<option value="9">9</option>
 					</select>
 				</div>
-				<div class="">
+				<div class="md:w-2/12 md:pl-5">
 					<input id="p5" class="border border-gray-300 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 w-[100%]" type="text" value="0"
 						style="text-align:right; font-size: medium;" disabled="">
 				</div>
 			</div>
 
             <!-- VGA 6-->
-			<div class="flex flex-col md:flex-row md:px-24 px-4 space-y-2">
-                <div class="md:w-2/12 font-medium mt-1">
+			<div class="flex flex-col md:flex-row md:mx-20 px-4 space-y-2">
+                <div class="md:w-2/12 font-medium mt-1 flex items-center">
 					<p>VGA</p>
 				</div>
 				<div class="md:w-7/12">
@@ -306,7 +306,7 @@
 						style="font-size: medium;">
 						<option value="0">Pilih VGA</option>
 						<?php
-						require_once "asset/konek/konek.php";
+						require_once "asset/koneksi/koneksi.php";;
 						$vga = mysqli_query($connect, "SELECT * FROM vga");
 						while($row=mysqli_fetch_array($vga)) {
 							?>
@@ -317,7 +317,7 @@
 					</select>
 					<input name="name6" id="nex6" type="hidden" value="0">
 				</div>
-				<div class="md:w-1/12">
+				<div class="md:w-1/12 md:pl-5">
 					<select class="border border-gray-300 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 w-[100%]" name="qty6" id="q6"
 						onchange="updateHarga(this.value, document.getElementById('s6'),document.getElementById('p6'))"
 						style="font-size: medium;">
@@ -332,15 +332,15 @@
 						<option value="9">9</option>
 					</select>
 				</div>
-				<div class="">
+				<div class="md:w-2/12 md:pl-5">
 					<input id="p6" class="border border-gray-300 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 w-[100%]" type="text" value="0"
 						style="text-align:right; font-size: medium;" disabled="">
 				</div>
 			</div>
 
             <!-- PSU 7-->
-			<div class="flex flex-col md:flex-row md:px-24 px-4 space-y-2">
-                <div class="md:w-2/12 font-medium mt-1">
+			<div class="flex flex-col md:flex-row md:mx-20 px-4 space-y-2">
+                <div class="md:w-2/12 font-medium mt-1 flex items-center">
 					<p>Power Supply
 					</p>
 				</div>
@@ -350,7 +350,7 @@
 						style="font-size: medium;">
 						<option value="0">Pilih Power Supply</option>
 						<?php
-						require_once "asset/konek/konek.php";
+						require_once "asset/koneksi/koneksi.php";;
 						$psu = mysqli_query($connect, "SELECT * FROM psu");
 						while($row=mysqli_fetch_array($psu)) {
 							?>
@@ -361,7 +361,7 @@
 					</select>
 					<input name="name7" id="nex7" type="hidden" value="0">
 				</div>
-				<div class="md:w-1/12">
+				<div class="md:w-1/12 md:pl-5">
 					<select class="border border-gray-300 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 w-[100%]" name="qty7" id="q7"
 						onchange="updateHarga(this.value, document.getElementById('s7'),document.getElementById('p7'))"
 						style="font-size: medium;">
@@ -376,15 +376,15 @@
 						<option value="9">9</option>
 					</select>
 				</div>
-				<div class="">
+				<div class="md:w-2/12 md:pl-5">
 					<input id="p7" class="border border-gray-300 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 w-[100%]" type="text" value="0"
 						style="text-align:right; font-size: medium;" disabled="">
 				</div>
 			</div>
 
             <!-- Casing 8-->
-			<div class="flex flex-col md:flex-row md:px-24 px-4 space-y-2">
-                <div class="md:w-2/12 font-medium mt-1">
+			<div class="flex flex-col md:flex-row md:mx-20 px-4 space-y-2">
+                <div class="md:w-2/12 font-medium mt-1 flex items-center">
 					<p>Casing</p>
 				</div>
 				<div class="md:w-7/12">
@@ -393,7 +393,7 @@
 						style="font-size: medium;">
 						<option value="0">Pilih Casing</option>
 						<?php
-						require_once "asset/konek/konek.php";
+						require_once "asset/koneksi/koneksi.php";;
 						$casing = mysqli_query($connect, "SELECT * FROM casing");
 						while($row=mysqli_fetch_array($casing)) {
 							?>
@@ -404,7 +404,7 @@
 					</select>
 					<input name="name8" id="nex8" type="hidden" value="0">
 				</div>
-				<div class="md:w-1/12">
+				<div class="md:w-1/12 md:pl-5">
 					<select class="border border-gray-300 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 w-[100%]" name="qty8" id="q8"
 						onchange="updateHarga(this.value, document.getElementById('s8'),document.getElementById('p8'))"
 						style="font-size: medium;">
@@ -419,15 +419,15 @@
 						<option value="9">9</option>
 					</select>
 				</div>
-				<div class="">
+				<div class="md:w-2/12 md:pl-5">
 					<input id="p8" class="border border-gray-300 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 w-[100%]" type="text" value="0"
 						style="text-align:right; font-size: medium;" disabled="">
 				</div>
 			</div>
 
             <!-- Keyboard 9-->
-			<div class="flex flex-col md:flex-row md:px-24 px-4 space-y-2">
-                <div class="md:w-2/12 font-medium mt-1">
+			<div class="flex flex-col md:flex-row md:mx-20 px-4 space-y-2">
+                <div class="md:w-2/12 font-medium mt-1 flex items-center">
 					<p>Keyboard</p>
 				</div>
 				<div class="md:w-7/12">
@@ -436,7 +436,7 @@
 						style="font-size: medium;">
 						<option value="0">Pilih Keyboard</option>
 						<?php
-						require_once "asset/konek/konek.php";
+						require_once "asset/koneksi/koneksi.php";;
 						$keyboard = mysqli_query($connect, "SELECT * FROM keyboard");
 						while($row=mysqli_fetch_array($keyboard)) {
 							?>
@@ -447,7 +447,7 @@
 					</select>
 					<input name="name9" id="nex9" type="hidden" value="0">
 				</div>
-				<div class="md:w-1/12">
+				<div class="md:w-1/12 md:pl-5">
 					<select class="border border-gray-300 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 w-[100%]" name="qty9" id="q9"
 						onchange="updateHarga(this.value, document.getElementById('s9'),document.getElementById('p9'))"
 						style="font-size: medium;">
@@ -462,15 +462,15 @@
 						<option value="9">9</option>
 					</select>
 				</div>
-				<div class="">
+				<div class="md:w-2/12 md:pl-5">
 					<input id="p9" class="border border-gray-300 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 w-[100%]" type="text" value="0"
 						style="text-align:right; font-size: medium;" disabled="">
 				</div>
 			</div>
 
             <!-- mouse 10-->
-			<div class="flex flex-col md:flex-row md:px-24 px-4 space-y-2">
-                <div class="md:w-2/12 font-medium mt-1">
+			<div class="flex flex-col md:flex-row md:mx-20 px-4 space-y-2">
+                <div class="md:w-2/12 font-medium mt-1 flex items-center">
 					<p>Mouse</p>
 				</div>
 				<div class="md:w-7/12">
@@ -479,7 +479,7 @@
 						style="font-size: medium;">
 						<option value="0">Pilih Mouse</option>
 						<?php
-						require_once "asset/konek/konek.php";
+						require_once "asset/koneksi/koneksi.php";;
 						$mouse = mysqli_query($connect, "SELECT * FROM mouse");
 						while($row=mysqli_fetch_array($mouse)) {
 							?>
@@ -490,7 +490,7 @@
 					</select>
 					<input name="name10" id="nex10" type="hidden" value="0">
 				</div>
-				<div class="md:w-1/12">
+				<div class="md:w-1/12 md:pl-5">
 					<select class="border border-gray-300 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 w-[100%]" name="qty10" id="q10"
 						onchange="updateHarga(this.value, document.getElementById('s10'),document.getElementById('p10'))"
 						style="font-size: medium;">
@@ -505,15 +505,15 @@
 						<option value="9">9</option>
 					</select>
 				</div>
-				<div class="">
+				<div class="md:w-2/12 md:pl-5">
 					<input id="p10" class="border border-gray-300 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 w-[100%]" type="text" value="0"
 						style="text-align:right; font-size: medium;" disabled="">
 				</div>
 			</div>
 
             <!-- monitor 11-->
-			<div class="flex flex-col md:flex-row md:px-24 px-4 space-y-2">
-                <div class="md:w-2/12 font-medium mt-1">
+			<div class="flex flex-col md:flex-row md:mx-20 px-4 space-y-2">
+                <div class="md:w-2/12 font-medium mt-1 flex items-center">
 					<p>Monitor</p>
 				</div>
 				<div class="md:w-7/12">
@@ -522,7 +522,7 @@
 						style="font-size: medium;">
 						<option value="0">Pilih Monitor</option>
 						<?php
-						require_once "asset/konek/konek.php";
+						require_once "asset/koneksi/koneksi.php";;
 						$monitor = mysqli_query($connect, "SELECT * FROM monitor");
 						while($row=mysqli_fetch_array($monitor)) {
 							?>
@@ -533,7 +533,7 @@
 					</select>
 					<input name="name11" id="nex11" type="hidden" value="0">
 				</div>
-				<div class="md:w-1/12">
+				<div class="md:w-1/12 md:pl-5">
 					<select class="border border-gray-300 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 w-[100%]" name="qty11" id="q11"
 						onchange="updateHarga(this.value, document.getElementById('s11'),document.getElementById('p11'))"
 						style="font-size: medium;">
@@ -548,15 +548,15 @@
 						<option value="9">9</option>
 					</select>
 				</div>
-				<div class="">
+				<div class="md:w-2/12 md:pl-5">
 					<input id="p11" class="border border-gray-300 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 w-[100%]" type="text" value="0"
 						style="text-align:right; font-size: medium;" disabled="">
 				</div>
 			</div>
 
             <!-- CPU Cooler 12-->
-			<div class="flex flex-col md:flex-row md:px-24 px-4 space-y-2">
-                <div class="md:w-2/12 font-medium mt-1">
+			<div class="flex flex-col md:flex-row md:mx-20 px-4 space-y-2">
+                <div class="md:w-2/12 font-medium mt-1 flex items-center">
 					<p>CPU Cooler</p>
 				</div>
 				<div class="md:w-7/12">
@@ -565,7 +565,7 @@
 						style="font-size: medium;">
 						<option value="0">Pilih CPU Cooler</option>
 						<?php
-						require_once "asset/konek/konek.php";
+						require_once "asset/koneksi/koneksi.php";;
 						$cpucooler = mysqli_query($connect, "SELECT * FROM cpucooler");
 						while($row=mysqli_fetch_array($cpucooler)) {
 							?>
@@ -576,7 +576,7 @@
 					</select>
 					<input name="name12" id="nex12" type="hidden" value="0">
 				</div>
-				<div class="md:w-1/12">
+				<div class="md:w-1/12 md:pl-5">
 					<select class="border border-gray-300 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 w-[100%]" name="qty12" id="q12"
 						onchange="updateHarga(this.value, document.getElementById('s12'),document.getElementById('p12'))"
 						style="font-size: medium;">
@@ -591,15 +591,15 @@
 						<option value="9">9</option>
 					</select>
 				</div>
-				<div class="">
+				<div class="md:w-2/12 md:pl-5">
 					<input id="p12" class="border border-gray-300 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 w-[100%]" type="text" value="0"
 						style="text-align:right; font-size: medium;" disabled="">
 				</div>
 			</div>
 
             <!-- Fan 13-->
-			<div class="flex flex-col md:flex-row md:px-24 px-4 space-y-2">
-                <div class="md:w-2/12 font-medium mt-1">
+			<div class="flex flex-col md:flex-row md:mx-20 px-4 space-y-2">
+                <div class="md:w-2/12 font-medium mt-1 flex items-center">
 					<p>Fan</p>
 				</div>
 				<div class="md:w-7/12">
@@ -608,7 +608,7 @@
 						style="font-size: medium;">
 						<option value="0">Pilih Fan</option>
 						<?php
-						require_once "asset/konek/konek.php";
+						require_once "asset/koneksi/koneksi.php";;
 						$coolerfan = mysqli_query($connect, "SELECT * FROM fan");
 						while($row=mysqli_fetch_array($coolerfan)) {
 							?>
@@ -619,7 +619,7 @@
 					</select>
 					<input name="name13" id="nex13" type="hidden" value="0">
 				</div>
-				<div class="md:w-1/12">
+				<div class="md:w-1/12 md:pl-5">
 					<select class="border border-gray-300 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 w-[100%]" name="qty13" id="q13"
 						onchange="updateHarga(this.value, document.getElementById('s13'),document.getElementById('p13'))"
 						style="font-size: medium;">
@@ -634,15 +634,15 @@
 						<option value="9">9</option>
 					</select>
 				</div>
-				<div class="">
+				<div class="md:w-2/12 md:pl-5">
 					<input id="p13" class="border border-gray-300 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 w-[100%]" type="text" value="0"
 						style="text-align:right; font-size: medium;" disabled="">
 				</div>
 			</div>
 
             <!-- Ups 14-->
-			<div class="flex flex-col md:flex-row md:px-24 px-4 space-y-2">
-                <div class="md:w-2/12 font-medium mt-1">
+			<div class="flex flex-col md:flex-row md:mx-20 px-4 space-y-2">
+                <div class="md:w-2/12 font-medium mt-1 flex items-center">
 					<p>Ups</p>
 				</div>
 				<div class="md:w-7/12">
@@ -651,7 +651,7 @@
 						style="font-size: medium;">
 						<option value="0">Pilih Ups</option>
 						<?php
-						require_once "asset/konek/konek.php";
+						require_once "asset/koneksi/koneksi.php";;
 						$ups = mysqli_query($connect, "SELECT * FROM ups");
 						while($row=mysqli_fetch_array($ups)) {
 							?>
@@ -662,7 +662,7 @@
 					</select>
 					<input name="name14" id="nex14" type="hidden" value="0">
 				</div>
-				<div class="md:w-1/12">
+				<div class="md:w-1/12 md:pl-5">
 					<select class="border border-gray-300 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 w-[100%]" name="qty14" id="q14"
 						onchange="updateHarga(this.value, document.getElementById('s14'),document.getElementById('p14'))"
 						style="font-size: medium;">
@@ -677,15 +677,15 @@
 						<option value="9">9</option>
 					</select>
 				</div>
-				<div class="">
+				<div class="md:w-2/12 md:pl-5">
 					<input id="p14" class="border border-gray-300 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 w-[100%]" type="text" value="0"
 						style="text-align:right; font-size: medium;" disabled="">
 				</div>
 			</div>
 
             <!-- Headset 15-->
-			<div class="flex flex-col md:flex-row md:px-24 px-4 space-y-2">
-                <div class="md:w-2/12 font-medium mt-1">
+			<div class="flex flex-col md:flex-row md:mx-20 px-4 space-y-2 ">
+                <div class="md:w-2/12 font-medium mt-1 flex items-center">
 					<p>Headset</p>
 				</div>
 				<div class="md:w-7/12">
@@ -694,7 +694,7 @@
 						style="font-size: medium;">
 						<option value="0">Pilih Headset</option>
 						<?php
-						require_once "asset/konek/konek.php";
+						require_once "asset/koneksi/koneksi.php";;
 						$headset = mysqli_query($connect, "SELECT * FROM headset");
 						while($row=mysqli_fetch_array($headset)) {
 							?>
@@ -705,7 +705,7 @@
 					</select>
 					<input name="name15" id="nex15" type="hidden" value="0">
 				</div>
-				<div class="md:w-1/12">
+				<div class="md:w-1/12 md:pl-5">
 					<select class="border border-gray-300 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 w-[100%]" name="qty15" id="q15"
 						onchange="updateHarga(this.value, document.getElementById('s15'),document.getElementById('p15'))"
 						style="font-size: medium;">
@@ -720,40 +720,22 @@
 						<option value="9">9</option>
 					</select>
 				</div>
-				<div class="">
+				<div class="md:w-2/12 md:pl-5">
 					<input id="p15" class="border border-gray-300 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 w-[100%]" type="text" value="0"
 						style="text-align:right; font-size: medium;" disabled="">
 				</div>
 			</div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         </div>
     </div>
     
+	<div class=" bg-yellow-400 w-full">
+		<div class="flex flex-col justify-center items-center p-2">
+			<span>Simulasi Rakit PC Gamaliel</span>
+			<span>Created Using HTML,CSS,JavaScript and PHP</span>
+		</div>
+	</div>
 
     <script>
 		$(document).ready(function () {

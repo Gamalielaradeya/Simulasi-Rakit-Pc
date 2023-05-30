@@ -1,5 +1,5 @@
 <?php
-    require_once "../asset/konek/konek.php";
+    require_once "../asset/koneksi/koneksi.php";
     $brand_id = $_POST["brand_id"];
     $result = mysqli_query($connect, "SELECT * FROM socket where brand_id = $brand_id");
 ?>

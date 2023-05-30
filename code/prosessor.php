@@ -1,5 +1,5 @@
 <?php
-    require_once "../asset/konek/konek.php";
+    require_once "../asset/koneksi/koneksi.php";
     $socket_id = $_POST["socket_id"];
     $result = mysqli_query($connect, "SELECT * FROM prosessor where socket_id = $socket_id");
 ?>
